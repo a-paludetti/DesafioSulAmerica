@@ -15,5 +15,15 @@ public class User {
     private String profile;
     private boolean status;
 
-    public User(){}
+    public User(String name, String CPF, String position, String profile) {
+        this.name = name;
+        this.CPF = CPF;
+        this.position = position;
+        this.profile = profile;
+        id = createId();
+    }
+
+    private UUID createId() {
+        return UUID.randomUUID();
+    }
 }
