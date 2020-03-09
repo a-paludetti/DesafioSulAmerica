@@ -43,4 +43,24 @@ public class UserController {
     public List<User> getUserByName(@PathVariable("name") String name) {
         return userServices.searchUserByName(name);
     }
+
+    @GetMapping(path = "{position}")
+    public List<User> getUserByPosition(@PathVariable("position") String position) {
+        return userServices.searchByPosition(position);
+    }
+
+    @GetMapping(path = "{profile}")
+    public List<User> getUserByProfile(@PathVariable("profile") String profile) {
+        return userServices.searchByPosition(profile);
+    }
+
+    @GetMapping(path = "{genre/age}")
+    public List<User> getUserByGenreAndAge(@PathVariable("position/age") String position, String age) {
+        return userServices.searchByGenderAndAge(position, age);
+    }
+
+    @GetMapping(path = "{active}")
+    public List<User> getActiveUsers(@PathVariable("active") String status) {
+        return userServices.searchByStatus(status);
+    }
 }

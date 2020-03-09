@@ -13,4 +13,9 @@ public class ProfileAcess implements ProfileDao {
     public void createNew(Profile profile) {
         profileList.add(profile);
     }
+
+    @Override
+    public List<Profile> getProfiles() {
+        return profileList;
+    }
 }

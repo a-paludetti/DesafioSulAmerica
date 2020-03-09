@@ -1,10 +1,12 @@
 package br.com.SulAmerica.desafio.DAO;
 
 import br.com.SulAmerica.desafio.Model.Position;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository("position")
 public class PositionAcess implements PositionDao {
 
     private final List<Position> positionList = new ArrayList<>();
@@ -22,5 +24,10 @@ public class PositionAcess implements PositionDao {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<Position> listPositions() {
+        return positionList;
     }
 }
