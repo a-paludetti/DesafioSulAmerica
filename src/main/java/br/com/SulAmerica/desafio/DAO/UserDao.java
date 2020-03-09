@@ -17,7 +17,7 @@ public interface UserDao {
 
     void updateUser(User user);
 
-    void removeUser(Long id);
+    void removeUser(String cpf);
 
     List<User> getUserByProfile(String profile);
 

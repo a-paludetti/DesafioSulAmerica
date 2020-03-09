@@ -25,18 +25,22 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userServices.getAllUsers();
     }
 
-//    @GetMapping
-//    public void updateUser(@PathVariable(""))
+    @GetMapping(path = "{update}")
+    public void updateUser(@PathVariable("update") User user) {
+        userServices.updateUser(user);
+    }
 
     @GetMapping(path = "{cpf}")
-    public Optional<User> getUserByCpf(@PathVariable("CPF") String cpf){
+    public Optional<User> getUserByCpf(@PathVariable("CPF") String cpf) {
         return userServices.searchUserByCpf(cpf);
     }
 
-//    @GetMapping(path = "{name}")
-//    public
+    @GetMapping(path = "{name}")
+    public List<User> getUserByName(@PathVariable("name") String name) {
+        return userServices.searchUserByName(name);
+    }
 }

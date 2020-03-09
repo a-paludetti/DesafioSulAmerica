@@ -3,10 +3,14 @@ package br.com.SulAmerica.desafio.Service;
 import br.com.SulAmerica.desafio.DAO.UserAcess;
 import br.com.SulAmerica.desafio.DAO.UserDao;
 import br.com.SulAmerica.desafio.Model.User;
+import br.com.caelum.stella.validation.CPFValidator;
+import br.com.caelum.stella.validation.InvalidStateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +25,18 @@ public class UserServices {
     }
 
     public void addUser(User user) {
-        userAcess.newUser(user);
+        try {
+            CPFValidator validator = new CPFValidator();
+
+            if (user.getCPF().matches("^[0-9]{11}$")) {
+                validator.assertValid(user.getCPF());
+                userAcess.newUser(user);
+            } else {
+                throw new InvalidStateException(Collections.EMPTY_LIST);
+            }
+        } catch (InvalidStateException e) {
+            e.getInvalidMessages();
+        }
     }
 
     public List<User> getAllUsers() {
@@ -33,7 +48,7 @@ public class UserServices {
     }
 
     public void deleteUser(User user) {
-        userAcess.removeUser(user.getId());
+        userAcess.removeUser(user.getCPF());
     }
 
     public List<User> searchUserByName(String name) {
@@ -52,15 +67,15 @@ public class UserServices {
         return userAcess.getUserByPosition(position);
     }
 
-    public List<User> searchByStatus(String status){
+    public List<User> searchByStatus(String status) {
         return userAcess.getUserByStatus(status);
     }
 
-    public List<User> searchByGenderAndAge(String gender, String Age){
+    public List<User> searchByGenderAndAge(String gender, String Age) {
         return userAcess.getUserByGenderAge(gender, Age);
     }
 
-    public List<User> searchByDigit(String digit){
+    public List<User> searchByDigit(String digit) {
         return userAcess.getUserByFirstDigit(digit);
     }
 }
