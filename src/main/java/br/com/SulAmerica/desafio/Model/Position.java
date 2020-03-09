@@ -9,4 +9,6 @@ public class Position {
     private UUID id;
 
     private String positionName;
+
+    private boolean active;
 }

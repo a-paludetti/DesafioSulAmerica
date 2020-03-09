@@ -4,7 +4,7 @@ import br.com.SulAmerica.desafio.Model.Position;
 
 public interface PositionDao {
 
-    Position createNewPosition(Position position);
+    void createNew(Position position);
 
-    void inactivatePosition(Position position);
+    String getName(Position position);
 }
