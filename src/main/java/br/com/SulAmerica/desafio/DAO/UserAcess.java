@@ -55,7 +55,7 @@ public class UserAcess implements UserDao {
     }
 
     @Override
-    public void removeUser(UUID id) {
+    public void removeUser(Long id) {
         getUserList().stream().filter(user -> {
             if (user.getId().equals(id)) {
                 user.setStatus(false);
@@ -68,7 +68,7 @@ public class UserAcess implements UserDao {
     public List<User> getUserByProfile(String profile) {
         List<User> userList = new ArrayList<>();
         getUserList().forEach(user -> {
-            if (user.getProfile().getProfileName().equals(profile)) {
+            if (user.getProfile().equals(profile)) {
                 userList.add(user);
             }
         });
@@ -79,7 +79,7 @@ public class UserAcess implements UserDao {
     public List<User> getUserByPosition(String postion) {
         List<User> userList = new ArrayList<>();
         getUserList().forEach(user -> {
-            if (user.getPosition().getPositionName().equals(postion)) {
+            if (user.getPosition().equals(postion)) {
                 userList.add(user);
             }
         });
