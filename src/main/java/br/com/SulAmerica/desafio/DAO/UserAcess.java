@@ -2,26 +2,25 @@ package br.com.SulAmerica.desafio.DAO;
 
 import br.com.SulAmerica.desafio.Model.User;
 import lombok.Data;
-import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-@Repository("User")
 @Data
+@Repository("User")
 public class UserAcess implements UserDao {
 
-    private final List<User> userList;
+    private List<User> userList = new ArrayList<>();
 
     @Override
     public List<User> listUsers() {
-        return getUserList();
+        return userList;
     }
 
     @Override
@@ -42,7 +41,12 @@ public class UserAcess implements UserDao {
 
     @Override
     public void newUser(User user) {
-        getUserList().add(user);
+        boolean cpfExists = userList.stream().anyMatch(user1 -> user1.getCPF().equals(user.getCPF()));
+        if (cpfExists) {
+            JOptionPane.showMessageDialog(null, "CPF já existente.");
+        } else {
+            userList.add(user);
+        }
     }
 
     @Override
@@ -109,7 +113,7 @@ public class UserAcess implements UserDao {
         List<User> userList = new ArrayList<>();
         getUserList().forEach(user -> {
             char position = user.getCPF().charAt(0);
-            if(digit.equals(position)){
+            if (digit.equals(position)) {
                 userList.add(user);
             }
         });

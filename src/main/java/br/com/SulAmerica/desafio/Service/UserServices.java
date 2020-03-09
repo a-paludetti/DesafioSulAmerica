@@ -1,5 +1,6 @@
 package br.com.SulAmerica.desafio.Service;
 
+import br.com.SulAmerica.desafio.DAO.UserAcess;
 import br.com.SulAmerica.desafio.DAO.UserDao;
 import br.com.SulAmerica.desafio.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,54 +13,54 @@ import java.util.Optional;
 @Service
 public class UserServices {
 
-    private final UserDao userDao;
+    private final UserAcess userAcess;
 
     @Autowired
-    public UserServices(@Qualifier("User") UserDao userDao) {
-        this.userDao = userDao;
+    public UserServices(@Qualifier("User") UserAcess userAcess) {
+        this.userAcess = userAcess;
     }
 
     public void addUser(User user) {
-        userDao.newUser(user);
+        userAcess.newUser(user);
     }
 
     public List<User> getAllUsers() {
-        return userDao.listUsers();
+        return userAcess.listUsers();
     }
 
     public void updateUser(User user) {
-        userDao.updateUser(user);
+        userAcess.updateUser(user);
     }
 
     public void deleteUser(User user) {
-        userDao.removeUser(user.getId());
+        userAcess.removeUser(user.getId());
     }
 
     public List<User> searchUserByName(String name) {
-        return userDao.selectUserByName(name);
+        return userAcess.selectUserByName(name);
     }
 
     public Optional<User> searchUserByCpf(String cpf) {
-        return userDao.selectUserByCPF(cpf);
+        return userAcess.selectUserByCPF(cpf);
     }
 
     public List<User> searchByProfile(String profile) {
-        return userDao.getUserByProfile(profile);
+        return userAcess.getUserByProfile(profile);
     }
 
     public List<User> searchByPosition(String position) {
-        return userDao.getUserByPosition(position);
+        return userAcess.getUserByPosition(position);
     }
 
     public List<User> searchByStatus(String status){
-        return userDao.getUserByStatus(status);
+        return userAcess.getUserByStatus(status);
     }
 
     public List<User> searchByGenderAndAge(String gender, String Age){
-        return userDao.getUserByGenderAge(gender, Age);
+        return userAcess.getUserByGenderAge(gender, Age);
     }
 
     public List<User> searchByDigit(String digit){
-        return userDao.getUserByFirstDigit(digit);
+        return userAcess.getUserByFirstDigit(digit);
     }
 }

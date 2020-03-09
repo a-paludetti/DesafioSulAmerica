@@ -19,12 +19,12 @@ CREATE TABLE IF NOT EXISTS tbl_uers (
   status BIT DEFAULT TRUE
 );
 
-INSERT INTO tbl_position VALUES (1, 'Gerente');
-INSERT INTO tbl_position VALUES (2, 'Supervisor');
-INSERT INTO tbl_position VALUES (3, 'Técnico');
-INSERT INTO tbl_position VALUES (4, 'Analista');
-
-INSERT INTO tbl_profile VALUES (1, 'administrador');
-INSERT INTO tbl_profile VALUES (2, 'comum');
-
-INSERT INTO tbl_uers VALUES (1, 'Fulano de Tal', '26365789203', 'Homem', '05/09/1977', 'Supervisor', 'administrador', true)
+--INSERT INTO tbl_position VALUES (1, 'Gerente');
+--INSERT INTO tbl_position VALUES (2, 'Supervisor');
+--INSERT INTO tbl_position VALUES (3, 'Técnico');
+--INSERT INTO tbl_position VALUES (4, 'Analista');
+--
+--INSERT INTO tbl_profile VALUES (1, 'administrador');
+--INSERT INTO tbl_profile VALUES (2, 'comum');
+--
+--INSERT INTO tbl_uers VALUES (1, 'Fulano de Tal', '26365789203', 'Homem', '05/09/1977', 'Supervisor', 'administrador', true)
