@@ -1,11 +1,8 @@
 package br.com.SulAmerica.desafio.DAO;
 
 import br.com.SulAmerica.desafio.Model.User;
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
-import lombok.Data;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;

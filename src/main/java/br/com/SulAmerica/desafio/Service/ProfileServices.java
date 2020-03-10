@@ -3,16 +3,18 @@ package br.com.SulAmerica.desafio.Service;
 import br.com.SulAmerica.desafio.DAO.ProfileAcess;
 import br.com.SulAmerica.desafio.Model.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ProfileServices {
+
     private final ProfileAcess profileAcess;
 
     @Autowired
-    public ProfileServices(ProfileAcess profileAcess) {
+    public ProfileServices(@Qualifier("profile") ProfileAcess profileAcess) {
         this.profileAcess = profileAcess;
     }
 

@@ -37,4 +37,18 @@ public class User {
     private UUID createId() {
         return UUID.randomUUID();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name +
+                "', CPF='" + CPF +
+                "', position='" + position +
+                "', profile='" + profile +
+                "', gender='" + gender +
+                "', birthdate='" + birthDate +
+                "', status=" + status +
+                '}';
+    }
 }
