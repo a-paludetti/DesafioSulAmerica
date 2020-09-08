@@ -4,14 +4,8 @@ import br.com.SulAmerica.desafio.Model.User;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface UserDao {
-    List<User> listUsers();
-
-    Optional<User> selectUserByCPF(String cpf);
-
-    List<User> selectUserByName(String name);
 
     void newUser(User user);
 
@@ -19,9 +13,15 @@ public interface UserDao {
 
     void removeUser(String cpf);
 
+    List<User> listUsers();
+
+    Optional<User> selectUserByCPF(String cpf);
+
+    List<User> selectUserByName(String name);
+
     List<User> getUserByProfile(String profile);
 
-    List<User> getUserByPosition(String postion);
+    List<User> getUserByPosition(String position);
 
     List<User> getUserByStatus(String status);
 

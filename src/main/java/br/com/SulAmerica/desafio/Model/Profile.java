@@ -1,11 +1,12 @@
 package br.com.SulAmerica.desafio.Model;
 
-import lombok.Data;
-
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.UUID;
 
-@Data
+@Entity
+@Table(name = "profile")
 public class Profile {
-    private UUID id;
+    private Long id;
     private String profileName;
 }

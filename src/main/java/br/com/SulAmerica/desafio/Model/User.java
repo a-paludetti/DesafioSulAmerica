@@ -1,12 +1,16 @@
 package br.com.SulAmerica.desafio.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 
-import java.util.UUID;
+import javax.persistence.*;
 
-@Data
+@Entity
+@Table(name = "user")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String CPF;
@@ -14,6 +18,7 @@ public class User {
     private String birthDate;
     private String position;
     private String profile;
+    @Value("${some.key:true}")
     private boolean status;
 
     public User(@JsonProperty("id") Long id,
@@ -34,10 +39,6 @@ public class User {
         this.status = status;
     }
 
-    private UUID createId() {
-        return UUID.randomUUID();
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -50,5 +51,70 @@ public class User {
                 "', birthdate='" + birthDate +
                 "', status=" + status +
                 '}';
+    }
+
+    /*Getter & Setters*/
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

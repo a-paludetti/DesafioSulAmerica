@@ -22,11 +22,19 @@ public class UserAcess implements UserDao {
         return userList;
     }
 
+    /**
+     * this should return the specific user based on their cpf
+     * @param cpf
+     * */
     @Override
     public Optional<User> selectUserByCPF(String cpf) {
         return getUserList().stream().filter(user -> user.getCPF().equals(cpf)).findFirst();
     }
 
+    /**
+     * this should return all users with the given name, partial or not
+     * @param name the string it's being searched for
+     * */
     @Override
     public List<User> selectUserByName(String name) {
         List<User> userList = new ArrayList<>();
@@ -38,6 +46,9 @@ public class UserAcess implements UserDao {
         return userList;
     }
 
+    /**
+     * adds a new user to the database
+     * @param user */
     @Override
     public void newUser(User user) {
         userList.stream().forEach(user1 -> {
@@ -49,6 +60,8 @@ public class UserAcess implements UserDao {
         });
     }
 
+    /**
+     * this */
     @Override
     public void updateUser(User user) {
         selectUserByCPF(user.getCPF())
